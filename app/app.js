@@ -5,7 +5,7 @@ angular.module('MojoApplication', ['ngRoute', 'toggle-switch', 'mojo.services'])
       $routeProvider.
           when("/home", {templateUrl: "views/home.html", controller: "indexController"}).
           when("/profile", {templateUrl: "views/profile.html", controller: "settingsController"}).
-          when("/pressrelease", {templateUrl: "views/pressrelease.html", controller: "indexController"}).
+          when("/pressrelease", {templateUrl: "views/pressrelease.html", controller: "pressreleaseController"}).
           when("/stories", {templateUrl: "views/stories.html", controller: "storiesController"}).
           when("/storydetails/:id", {templateUrl: "views/storydetails.html", controller: "storyDetailController"}).
           otherwise({redirectTo: '/home'});
@@ -19,18 +19,22 @@ angular.module('MojoApplication', ['ngRoute', 'toggle-switch', 'mojo.services'])
         }
 
         $scope.home = function () {
-            $window.location.href = '#/home';
+          $scope.openMenu = false;
+          $window.location.href = '#/home';
         }
         
         $scope.story = function () {
+          $scope.openMenu = false;
             $window.location.href = '#/stories';
         }
 
         $scope.profileSettings = function () {
+          $scope.openMenu = false;
           $window.location.href = '#/profile';
         }
 
         $scope.pressRelease = function () {
+          $scope.openMenu = false;
           $window.location.href = '#/pressrelease';
         }
     })
@@ -69,4 +73,10 @@ angular.module('MojoApplication', ['ngRoute', 'toggle-switch', 'mojo.services'])
     .controller('storyDetailController', function($scope, $window, $routeParams, mojoservice) {
           $scope.id = $routeParams.id;
           $scope.story = mojoservice.getStrory($routeParams.id);
+    })
+    .controller('pressreleaseController', function($scope, $window, $routeParams, mojoservice) {
+        $scope.pressReleases = mojoservice.getPressReleases();
+        $scope.saveRelease = function(id) {
+            alert('Press Releases saved to calendar!');
+        }
     });

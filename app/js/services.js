@@ -18,6 +18,26 @@ angular.module('mojo.services', [])
           'details': ''
         }
     ];
+    var pressReleases = [
+        {
+          'id': 1,
+          'headline': 'Regional Election Compaign, Sydney, parramatta',
+          'date': '2015-10-25 12:00',
+          'location': 'Sydney'
+        },
+        {
+          'id': 2,
+          'headline': 'WORLD',
+          'date': '2015-11-05 08:00',
+          'location': 'London'
+        },
+        {
+          'id': 3,
+          'headline': 'WORLD',
+          'date': '2015-11-15 18:00',
+          'location': 'London'
+        }
+    ];
 
    /* ergastAPI.getDrivers = function() {
       return $http({
@@ -32,10 +52,12 @@ angular.module('mojo.services', [])
 
     this.getStrory = function(id) {
       var result = $filter('filter')(stories, { 'id': id });
-      //$.grep(stories, function(e){ return e.id == id; });
       return result[0];
     }
 
-    //returnstories
+    this.getPressReleases = function () {
+      return pressReleases;
+    };
+
 
   });
