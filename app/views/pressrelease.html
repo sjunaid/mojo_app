@@ -6,14 +6,10 @@
 	        	<div id="slide">
 	        		<div class="headline" ng-click="more(story.id)">{{release.headline}}</div>
 				    <div id="slide-body">
-				    	<div class="details">{{release.date}} - {{release.location}}</div>
-				    	<button class="btn btn-info btn-save" id="save" ng-click="saveRelease(release.id)">Save to Calender</button>
+				    	<div class="details strong">Date: {{release.date | date: "MM/dd/yyyy" }} Time: {{release.date | date: "h:mma" }} and Location: {{release.location}}</div>
+				    	<button class="btn btn-info btn-save" id="save" ng-click="saveRelease(release.id)">Save to Calendar</button>
 				    </div>
-				    <!-- <div style="font-size: 12px;" id="save" ng-click="saveRelease(release.id)">Save to Calender</div> -->
 				</div>
-				<!-- <div>
-	 				<button class="btn btn-info btn-save" id="save" ng-click="saveRelease(release.id)">Save to Calender</button>
-	 			</div> -->
 	        </li>
 	    </ul>
 	</div>

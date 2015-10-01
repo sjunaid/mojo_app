@@ -1,5 +1,5 @@
 angular.module('mojo.services', [])
-  .service('mojoservice', function($http, $filter) {
+  .service('mojoservice', function($http, $filter, _) {
 
     var stories = [
         {
@@ -22,30 +22,25 @@ angular.module('mojo.services', [])
         {
           'id': 1,
           'headline': 'Regional Election Compaign, Sydney, parramatta',
-          'date': '2015-10-25 12:00',
+          'date': '2015-10-25T12:00:00',
           'location': 'Sydney'
         },
         {
           'id': 2,
           'headline': 'WORLD',
-          'date': '2015-11-05 08:00',
-          'location': 'London'
+          'date': '2015-11-05T08:00:00',
+          'location': 'Canberra'
         },
         {
           'id': 3,
           'headline': 'WORLD',
-          'date': '2015-11-15 18:00',
-          'location': 'London'
+          'date': '2015-11-15T18:00:00',
+          'location': 'Melbourne'
         }
     ];
 
-   /* ergastAPI.getDrivers = function() {
-      return $http({
-        method: 'JSONP', 
-        url: 'http://ergast.com/api/f1/2013/driverStandings.json?callback=JSON_CALLBACK'
-      });
-    }
-*/
+    this.user = {};
+
     this.getStories = function () {
       return stories;
     };
@@ -53,11 +48,37 @@ angular.module('mojo.services', [])
     this.getStrory = function(id) {
       var result = $filter('filter')(stories, { 'id': id });
       return result[0];
-    }
+    };
 
     this.getPressReleases = function () {
       return pressReleases;
     };
+    
+    this.getLocations = function() {
+        return [{'name': 'Adelaide', 'selected': false},
+                {'name': 'Brisbane', 'selected': false},
+                {'name': 'Darwin', 'selected': false},
+                {'name': 'Melbourne', 'selected': false},
+                {'name': 'Perth', 'selected': false},
+                {'name': 'Sydney', 'selected': false}];
+    };
+    
+    this.upsertUser = function (user) {
+        this.user = user;
+    };
 
+    this.getUserSettings = function () {
+        if (_.isEmpty(this.user)) {
+            this.user.locations = this.getLocations();
+        }
 
-  });
+        return this.user;
+    };
+
+    this.getCategories = function() {
+        return [{'name': 'Australian General News', 'selected': false},
+                {'name': 'Finance', 'selected': false},
+                {'name': 'Sports', 'selected': false},
+                {'name': 'Entertainment', 'selected': false}];
+    };
+});

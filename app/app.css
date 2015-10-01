@@ -1,5 +1,13 @@
 /* app css stylesheet */
 
+.btn {
+    border: 0;
+    border-radius: 0;
+    line-height: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
@@ -46,6 +54,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.item-info .strong {
+    font-weight: bold;
+}
+
 .page-margin {
   padding-left:30px;
   padding-right:200px;

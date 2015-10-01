@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('MojoApplication', ['ngRoute', 'toggle-switch', 'mojo.services'])
+angular.module('MojoApplication', ['ngRoute', 'toggle-switch', 'lodash', 'mojo.services'])
   .config(['$routeProvider', function($routeProvider) {
       $routeProvider.
           when("/home", {templateUrl: "views/home.html", controller: "indexController"}).
@@ -39,30 +39,24 @@ angular.module('MojoApplication', ['ngRoute', 'toggle-switch', 'mojo.services'])
         }
     })
     .controller('settingsController', function($scope, $window, $routeParams, mojoservice) {
-        $scope.data = {
-            location: [],
-            option1: 'Sydney'
-        };
-
-        $scope.categoryModel = {
-            Sports : false,
-            Politics : false
-        };
-
-        $scope.anpaCategoryModel = {
-            'Australian General News' : false,
-            'Finance' : false
-        };
-
         $scope.alerts = false;
 
         $scope.updateUserSettings = function(user) {
             $scope.user = user;
+            mojoservice.upsertUser(user);
         };
 
         $scope.toggleAlerts = function () {
             $scope.alerts = !$scope.alerts;
+        };
+
+        function initSettings() {
+            $scope.user = mojoservice.getUserSettings();
+            $scope.categories = mojoservice.getCategories();
+            $scope.alertCategories = mojoservice.getCategories();
         }
+
+        initSettings();
     })
     .controller('storiesController', function($scope, $window, $routeParams, mojoservice) {
         $scope.stories = mojoservice.getStories();
