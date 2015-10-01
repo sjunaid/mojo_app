@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MojoApplication" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Mojo Application</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+        <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+        <link rel="stylesheet" href="bower_components/angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.css">
+        <link rel="stylesheet" href="app.css">
+        <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+
+    <body>
+
+        <div ng-Controller="indexController">
+            <div>
+                <div id="top-menu" ng-class="{'menu-open': openMenu}">
+                    <div class="nav pull-left">
+                        <button style="height:48px;width:48px;" class="collapse-nav pull-left" ng-click="toggleMenu()"><i class="glyphicon glyphicon-menu-hamburger"></i></button>
+                    </div>
+                    <h2 class="app-title">MOJO - Mobile Journal</h2>
+                </div>
+                <div id="main-menu" ng-class="{'menu-open': openMenu}">
+                    <div class="header"></div>
+                    <div class="content">
+                        <ul>
+                            <li><a ng-click="home()">Home</a></li>
+                            <li><a href="" ng-click="story()">Stories</a></li>
+                            <li><a href="" ng-click="pressRelease()">Press Releases</a></li>
+                            <li><a ng-click="profileSettings()">Settings</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="main-container" ng-class="{'menu-open': openMenu}">
+               <div ng-view></div>
+            </div>
+        </div>
+
+        <!-- -->
+
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+
+        <script src="bower_components/angular-route/angular-route.js"></script>
+
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+        <script src="bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.min.js"></script>
+
+        <script src="app.js"></script>
+
+        <script src="js/services.js"></script>
+    </body>
+</html>

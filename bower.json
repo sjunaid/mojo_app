@@ -1,0 +1,15 @@
+{
+  "name": "mojo_app",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.3.5",
+    "angular": "1.4.7",
+    "angular-resource": "1.4.7",
+    "angular-route": "1.4.7",
+    "angular-bootstrap": "0.13.4",
+    "angular-loader": "1.4.7",
+    "html5-boilerplate": "~5.2.0",
+    "angular-bootstrap-toggle-switch": "~0.5.5"
+  }
+}

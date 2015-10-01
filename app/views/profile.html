@@ -1,0 +1,48 @@
+<div class="page-margin">
+	<h1>Settings</h1>
+
+    <form novalidate>
+        <div class="form-group">
+		    <label for="userName">User Name</label>
+            <input id="userName" name="userName" type="text" ng-model="user.name" class="form-control">
+        </div>
+
+    	<div class="form-group">
+   			<label for="location">Location</label><br />
+   			<select name="location" id="location" ng-model="data.location" class="form-control" multiple>
+                <option value="option-2">Adelaide</option>
+                <option value="option-3">Brisbane</option>
+                <option value="option-3">Darwin</option>
+                <option value="option-3">Melbourne </option>
+                <option value="option-3">Perth</option>
+                <option value="option-1">Sydney</option>
+    	    </select>
+   		</div>
+
+        <div class="form-group">
+            <label>News Category</label>
+            <div class="input-group sub-level">
+                <label><input type="checkbox" ng-model="categoryModel.Sports"> Sports</label>
+            </div>
+            <div class="input-group sub-level">
+                <label> <input type="checkbox" ng-model="categoryModel.Politics"> Politics </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Alerts </label>
+            <toggle-switch ng-model="alerts" data-onChange="toggleAlerts()" class="switch-mini pull-right"> </toggle-switch>
+        </div>
+
+		<div ng-if="alerts" class="input-group sub-level">
+			<label> <input type="checkbox" ng-model="anpaCategoryModel.value1"> Australian General News </label>
+        </div>
+        <div ng-if="alerts" class="input-group sub-level">
+			<label> <input type="checkbox" ng-model="anpaCategoryModel.value2"> Finance </label>
+		</div>
+
+        <div class="form-group pull-right">
+            <button class="btn btn-info" ng-click="updateUserSettings(user)">Save</button>
+        </div>
+    </form>
+</div>
