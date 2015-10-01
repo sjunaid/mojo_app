@@ -8,24 +8,18 @@
         </div>
 
     	<div class="form-group">
-   			<label for="location">Location</label><br />
-   			<select name="location" id="location" ng-model="data.location" class="form-control" multiple>
-                <option value="option-2">Adelaide</option>
-                <option value="option-3">Brisbane</option>
-                <option value="option-3">Darwin</option>
-                <option value="option-3">Melbourne </option>
-                <option value="option-3">Perth</option>
-                <option value="option-1">Sydney</option>
-    	    </select>
+   			<label>Location</label>
+
+            <div class="input-group sub-level" ng-repeat="location in user.locations">
+                <label><input type="checkbox" ng-model="location.selected"> {{location.name}}</label>
+            </div>
    		</div>
 
         <div class="form-group">
             <label>News Category</label>
-            <div class="input-group sub-level">
-                <label><input type="checkbox" ng-model="categoryModel.Sports"> Sports</label>
-            </div>
-            <div class="input-group sub-level">
-                <label> <input type="checkbox" ng-model="categoryModel.Politics"> Politics </label>
+
+            <div class="input-group sub-level" ng-repeat="category in categories">
+                <label><input type="checkbox" ng-model="category.selected"> {{category.name}}</label>
             </div>
         </div>
 
@@ -34,12 +28,9 @@
             <toggle-switch ng-model="alerts" data-onChange="toggleAlerts()" class="switch-mini pull-right"> </toggle-switch>
         </div>
 
-		<div ng-if="alerts" class="input-group sub-level">
-			<label> <input type="checkbox" ng-model="anpaCategoryModel.value1"> Australian General News </label>
+        <div class="input-group sub-level" ng-if="alerts" ng-repeat="category in alertCategories">
+            <label><input type="checkbox" ng-model="category.selected"> {{category.name}}</label>
         </div>
-        <div ng-if="alerts" class="input-group sub-level">
-			<label> <input type="checkbox" ng-model="anpaCategoryModel.value2"> Finance </label>
-		</div>
 
         <div class="form-group pull-right">
             <button class="btn btn-info" ng-click="updateUserSettings(user)">Save</button>

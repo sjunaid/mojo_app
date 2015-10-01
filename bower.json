@@ -10,6 +10,7 @@
     "angular-bootstrap": "0.13.4",
     "angular-loader": "1.4.7",
     "html5-boilerplate": "~5.2.0",
-    "angular-bootstrap-toggle-switch": "~0.5.5"
+    "angular-bootstrap-toggle-switch": "~0.5.5",
+    "angular-lodash-module": "~1.2.0"
   }
 }
