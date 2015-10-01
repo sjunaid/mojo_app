@@ -1,3 +1,32 @@
  <div class="page-margin">
-	<h3>Home</h3>
+	<h3>Press Releases</h3>
+	 <div> 
+	    <ul>
+	        <li class="item-info" ng-repeat="release in pressReleases">
+	        	<div id="slide">
+	        		<div class="headline" ng-click="more(story.id)">{{release.headline}}</div>
+				    <div id="slide-body">
+				    	<div class="details strong">Date: {{release.date | date: "MM/dd/yyyy" }} Time: {{release.date | date: "h:mma" }} and Location: {{release.location}}</div>
+				    	<button class="btn btn-info btn-save" id="save" ng-click="saveRelease(release.id)">Save to Calendar</button>
+				    </div>
+				</div>
+	        </li>
+	    </ul>
+	</div>
+	<br />
+  	<h3>Stories</h3>
+ 	<div> 
+	    <ul>
+	        <li class="item-info" ng-repeat="story in stories">
+	        	<div id="slide">
+	        		<div class="headline" ng-click="more(story.id)">{{story.headline}}</div>
+				    <div id="slide-body">
+				    	<div class="details">{{story.details}}</div>
+				    	<!-- <button class="btn btn-info btn-save" id="more" ng-click="more(story.id)">More...</button> -->
+				    </div>
+				    <div style="font-size: 12px;" id="more" ng-click="more(story.id)"><a>more...</a></div>
+				</div>
+	        </li>
+	    </ul>
+	</div>
 </div>

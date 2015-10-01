@@ -14,6 +14,18 @@ angular.module('MojoApplication', ['ngRoute', 'toggle-switch', 'lodash', 'mojo.s
         $scope.user = {};
         $scope.openMenu = false;
 
+        //stories
+        $scope.stories = mojoservice.getStories();
+        $scope.more = function(id) {
+            $window.location.href = '#/storydetails/' + id;
+        }
+
+        //press reeleases
+        $scope.pressReleases = mojoservice.getPressReleases();
+        $scope.saveRelease = function(id) {
+            alert('Press Releases saved to calendar!');
+        }
+
         $scope.toggleMenu = function () {
             $scope.openMenu = !$scope.openMenu;
         }
